@@ -1,19 +1,31 @@
 #include<stdio.h>
-
+#include<math.h>
 //a = bq + r
-int note_type[] = {1, 2, 5, 10, 20, 50, 100};
 
-int divide(rem)
-int rem;
+int note_type[] = {1, 2, 5, 10, 20, 50, 100};
+int len = sizeof note_type/sizeof note_type[0];
+
+int divide(a)
+int a;
 {
-    int num = note_type[-1];
-    for (int i = 0; i < 7; i++){
-        if (i != 6 && note_type[i] < rem && note_type[i + 1] > rem ){
-            num = note_type[i];
+    if (a > 0){
+        int b = note_type[-1];
+        for (int i = 0; i < len; i++){
+            if (i < len - 1 && note_type[i] < a && note_type[i + 1] > a){
+                b = note_type[i];
+            }
+            if (a == note_type[i]){
+                b = note_type[i];
+            }
         }
-        if (rem == note_type[i]){
-            num = note_type[i];
-        }
+        int r = a % b;
+        printf("r = %d\n", r);
+        printf("%d\n", divide(r));
+        int q = floor(a/b);
+        printf("(%d * %d) + %d", b, q, divide(r));
+    }
+    if (a == 0){
+        printf("(0 * 0) +");
     }
 }
 
@@ -23,7 +35,8 @@ int main(){
     printf("Enter any val: ");
     scanf("%d", &val);
 
-
+    divide(val);
+    printf(" = %d", val);
 
     return 0;
 }
