@@ -26,33 +26,39 @@ int num;
     return(ans);
 }
 
-int recurse(x)
+float recurse(x)
 float x;
 {
     static int counter = 1, num = 1;
+    float ans = 0;
 
-    while (counter <= 10){
+    if (counter > 10){
+        return 1;
+    }
+
+    if (counter <= 10){
         if (counter % 2 != 0){
-            x += power(x, num)/factorial(num);
+            ans = (power(x, num))/(factorial(num));
         }
         if (counter % 2 == 0){
-            x -= (power(x, num)/factorial(num));
+            ans = -(power(x, num)/factorial(num));
         }
-        counter += 1;
-        num += 2;
-
     }
-    return(x);
+    
+    printf("ans = %f; num = %d ; counter = %d\n", ans, num, counter);
+    counter += 1;
+    num += 2;
+    return(ans + (recurse(x)));
 }
 
 int main(){
-    float x, ans;
+    float x, f_ans;
 
     printf("Enter val of x: ");
     scanf("%f", &x);
 
-    ans = recurse(x);
-    printf("%f", ans);
+    f_ans = recurse(x);
+    printf("\n\nANS = %f", f_ans);
 
     return 0;
 }
