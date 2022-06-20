@@ -25,7 +25,7 @@ int main(){
         printf("%d ", arr[p1]);
     }
 
-    printf("\n%d", ms);
+    printf("\nms : %d", ms);
     
     return 0;
 }
