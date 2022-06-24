@@ -4,12 +4,12 @@ int main(){
     
     int arr[10] = {1, 1, 2, 2, 3, 3, 4, 4, 5, 5};
     int len = sizeof(arr)/sizeof(arr[0]);
-    int high = 1;
+    int high = 2;
 
     int counter = 0;
 
     //Ascending
-    for (int p1 = 0; p1 < len/2; p1++){
+    for (int p1 = 1; p1 < len/2; p1++){
         for (int p2 = p1 + 1; p2 < len; p2 += 2){
             counter++;
             if (arr[p2] != arr[p1] && arr[p2] == high){
